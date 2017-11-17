@@ -6,7 +6,7 @@
     <p>{{ temp }}ºC</p>
     {{ min }}ºC,{{ max }}ºC
   </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -24,7 +24,6 @@ export default {
       temp: temp,
       min: min,
       max: max
-
     }
   }
 }
