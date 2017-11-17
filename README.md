@@ -1,4 +1,4 @@
-# myvueproject
+# Teide
 
 > A Vue.js project
 
