@@ -1,17 +1,22 @@
 <template>
   <div class="hello">
+    <div class="weather">
+      <p>{{ temp }} ºC</p>
+      {{ min }} ºC | {{ max }} ºC
+      <p>{{ keyword}}</p>
+    </div>
     <h2>{{ msg }}</h2>
     <h1>{{ time }}</h1>
     <h2>{{ date }}</h2>
-    <p>{{ temp }}ºC</p>
-    {{ min }}ºC,{{ max }}ºC
+
   </div>
 </div>
 </template>
 
 <script>
 import currentDate from '../controllers/momentController'
-import weatherController from '../controllers/weatherController'
+import weatherData, {temp, min, max, keyword} from '../models/weatherData'
+// import {trial, trial2} from '../controllers/trialController'
 var cdate = currentDate("date")
 var ctime = currentDate("time")
 export default {
@@ -23,7 +28,8 @@ export default {
       time: ctime,
       temp: temp,
       min: min,
-      max: max
+      max: max,
+      keyword: keyword
     }
   }
 }
@@ -48,5 +54,9 @@ li {
 
 a {
   color: #42b983;
+}
+.weather{
+  border:1px solid white;
+  width:10%;
 }
 </style>
