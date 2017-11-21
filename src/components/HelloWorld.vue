@@ -1,22 +1,25 @@
 <template>
   <div class="hello">
     <div class="weather">
-      <p>{{ temp }} ºC</p>
-      {{ min }} ºC | {{ max }} ºC
-      <p>{{ keyword}}</p>
+      <p>{{ tempA[0] }} ºC</p>
+      {{ tempA[1] }} ºC | {{ tempA[2] }} ºC
+      <p>{{ locationA}}</p>
+    </div>
+    <div class="weather">
+      <p>{{ tempB[0] }} ºC</p>
+      {{ tempB[1] }} ºC | {{ tempB[2] }} ºC
+      <p>{{ locationB}}</p>
     </div>
     <h2>{{ msg }}</h2>
     <h1>{{ time }}</h1>
     <h2>{{ date }}</h2>
-
   </div>
-</div>
 </template>
 
 <script>
 import currentDate from '../controllers/momentController'
-import weatherData, {temp, min, max, keyword} from '../models/weatherData'
-// import {trial, trial2} from '../controllers/trialController'
+// import weatherData, {tempLaguna, tempSeville, tempMerida, keyword} from '../models/weatherData'
+import weatherData, {tempA,tempB, keyword} from '../models/weatherData'
 var cdate = currentDate("date")
 var ctime = currentDate("time")
 export default {
@@ -26,10 +29,11 @@ export default {
       msg: 'Hello World',
       date: cdate,
       time: ctime,
-      temp: temp,
-      min: min,
-      max: max,
-      keyword: keyword
+      tempA: tempA,
+      tempB: tempB,
+      // max: tempLaguna,
+      locationA: keyword[0],
+      locationB:keyword[1]
     }
   }
 }
@@ -57,6 +61,7 @@ a {
 }
 .weather{
   border:1px solid white;
-  width:10%;
+  width:120px;
+  background-color: rgba(255,255,255,0.25);
 }
 </style>
