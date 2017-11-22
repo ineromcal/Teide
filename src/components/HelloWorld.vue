@@ -13,10 +13,12 @@
     <h2>{{ msg }}</h2>
     <h1>{{ time }}</h1>
     <h2>{{ date }}</h2>
+    <button v-on:click="logout">Logout</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
 import currentDate from '../controllers/momentController'
 // import weatherData, {tempLaguna, tempSeville, tempMerida, keyword} from '../models/weatherData'
 import weatherData, {tempA,tempB, keyword} from '../models/weatherData'
@@ -34,6 +36,13 @@ export default {
       // max: tempLaguna,
       locationA: keyword[0],
       locationB:keyword[1]
+    }
+  },
+  methods: {
+    logout: function(){
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
     }
   }
 }

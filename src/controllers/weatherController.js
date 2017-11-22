@@ -2,6 +2,11 @@ import WeatherAPI from 'simple-weather-api'
 import _ from 'lodash'
 import Vue from 'vue'
 var temps =new Array()
+// temps = {
+//   temp : 0,
+//   min : 0,
+//   max : 0
+// }
 var temp =0
 var min=0
 var max=0
