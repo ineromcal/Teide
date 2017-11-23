@@ -21,7 +21,7 @@
 import firebase from 'firebase'
 import currentDate from '../controllers/momentController'
 // import weatherData, {tempLaguna, tempSeville, tempMerida, keyword} from '../models/weatherData'
-import weatherData, {tempA,tempB, keyword} from '../models/weatherData'
+import weatherData, {res, keyword} from '../models/weatherData'
 var cdate = currentDate("date")
 var ctime = currentDate("time")
 export default {
@@ -31,8 +31,8 @@ export default {
       msg: 'Hello World',
       date: cdate,
       time: ctime,
-      tempA: tempA,
-      tempB: tempB,
+      tempA: res.tempA,
+      tempB: res.tempB,
       // max: tempLaguna,
       locationA: keyword[0],
       locationB:keyword[1]

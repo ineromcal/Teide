@@ -4,6 +4,7 @@
     <input type="text" v-model="email" placeholder="Email"><br>
     <input type="password" v-model="password" placeholder="Password"><br>
     <button v-on:click="signIn">Connection</button>
+    <button v-on:click="resetPassword">I forgot my password</button>
     <p>You don't have a account? You can create one <router-link to="/sign-up">here</router-link>.</p>
   </div>
 </template>
@@ -23,6 +24,16 @@ export default{
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
         (user)=>{
         this.$router.replace('helloWorld')
+        },
+        (err)=>{
+          alert('Ups..'+err.message)
+        }
+      );
+    },
+    resetPassword:function(){
+      firebase.auth().sendPasswordResetEmail(this.email).then(
+        (user)=>{
+          alert('Check your email!')
         },
         (err)=>{
           alert('Ups..'+err.message)
