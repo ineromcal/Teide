@@ -4,6 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import firebase from 'firebase'
+import axios from 'axios'
+import VueCarousel from 'vue-carousel'
+import BootstrapVue from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
 // Initialize Firebase
@@ -22,6 +30,7 @@ firebase.auth().onAuthStateChanged(function(user){
   if(!app){
     app=new Vue({
       el: '#app',
+      render: h=>h(App),
       template:'<App/>',
       components: {App},
       router
@@ -39,4 +48,15 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
+})
+
+//rendering Carousel
+Vue.use(VueCarousel);
+new Vue({
+  el: '#carousel',
+  components:{
+    'carousel': VueCarousel.Carousel,
+    'slide': VueCarousel.Slide
+  },
+  render: h=>h(App),
 })
