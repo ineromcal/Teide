@@ -1,51 +1,50 @@
 <template>
   <div id="app">
-    <div class="container">
-      <carousel class="randomImages" id="carousel"
-        :autoplay="true"
-        :navigationEnabled="true"
-        :pageCount="10"
-        :navigationClickTargetSize="40"
-        :perPage="1">
-      <slide id="hero" v-for="src in srcURLs" :key="srcURLs.src">
-        <img class="hero-image" v-bind:src="src"><img>
-          <router-view/>
-      </slide>
-      </carousel>
+    <div class="myBackground myContainer">
+
+      <router-view/>
     </div>
   </div>
 </template>
+
 <script>
-// import unsplahsModel from './models/unsplahsModel.js'
-import {unsplahsApi} from './controllers/unsplashController.js';
+import {fetchData, startRandom, randomizeImages} from './utils/randomizeImages.js';
+var guard = false;
+var i = 0;
 export default {
   data() {
     return {
       name: 'app',
-      srcURLs: []
     };
   },
-  created(){
-    this.fetchData();
+  mounted() {
+    if (!guard){
+      var d1 = new Date();
+      guard = true;
+      console.log("Mounted", d1.getSeconds());
+      this.getImages();
+    };
   },
-  methods: {
+  methods:{
+    getImages: function(){
+      fetchData().then(function(response){
+        console.log("RESPONSE: "+response);
+        var mydata = response;
+        var d1 = new Date();
+        console.log("Before first startRandom", d1.getSeconds());
+        randomizeImages(mydata,i);
 
-    fetchData() {
-      //return 10 objects from the api
-      unsplahsApi.get('/photos/random?count=20&collections=932809')
-      //create a function to assign the response
-      .then(splashResponse => {
-        //assign the return to a variable
-        var heroImages = splashResponse.data
-        console.log("Splash: "+splashResponse.data)
-        //array 10 urls from the return *look at map functions
-        for (var i=0; i<heroImages.length; i++) {
-          this.srcURLs.push(heroImages[i].urls.regular)
-        }
-      });
+      })
+    },
+    prueba: function(){
+      setTimeout(function(){
+        var d2 = new Date();
+        console.log("Calling prueba", d2.getSeconds());
+      },5000);
     }
   }
 }
+
 </script>
 
 <style>
@@ -58,43 +57,70 @@ export default {
   bottom: 0;
   position: fixed;
 }
-.container{
+.withRadius {
+  border-radius: 8px;
 }
 
-/*#app {
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.myInput, .myInput:focus, .myInput:active {
+  background-color: #eeeeee !important;
+}
+
+.border{
+  text-align: center;
+  margin-top: 15px;
+  border-width: 1px;
+  border-color: white;
+  padding: 10px;
+  width: 40%;
+  background-color: rgba(255,255,255,0.9);
+}
+.teide{
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
   color: white;
-  margin: 0%;
-  font-size: 18px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.2);
-  position: fixed;
+  font-size: 50px;
+  margin-top: 40px;
 }
 html,
 body,
-.background{
+.myBackground{
   width: 100%;
   height: 100%;
   margin: 0%;
+
 }
 
-.background {
+.myBackground {
   position: fixed;
-}
-
-.background:after {
   content: "";
-  background-image: url("../images/image2.jpg");
+  /*background-image: url("../images/image3.jpg");*/
   background-size: cover;
-  position: fixed;
   z-index:-1;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   opacity: .9;
+
+}
+
+/*.myBackground:after {
+content: "";
+background-image: url("../images/image3.jpg");
+background-size: cover;
+position: fixed;
+z-index:-1;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+opacity: .9;
 }*/
+
+.text-quicksand {
+  font-family: 'Quicksand' !important;
+  font-size: 16px;
+}
+
 </style>

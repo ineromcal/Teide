@@ -1,10 +1,16 @@
 <template>
-  <div class="login">
-    <h3>Let's enter to Teide!</h3>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <button v-on:click="signUp">Sign Up</button>
-    <span>Or go back to <router-link to="/login">login</router-link>.</span>
+  <div>
+    <h3 class = "teide">Teide</h3>
+    <div class="row text-quicksand">
+      <div class="col-sm-6 offset-sm-3 border withRadius">
+        <div class="form-group">
+          <input class="form-control myInput" type="text" v-model="email" placeholder="Email"><br>
+          <input class="form-control myInput" type="password" v-model="password" placeholder="Password"><br>
+          <button class="btn btn-outline-primary" v-on:click="signUp">Sign Up</button> <br/><br/>
+          <span>Already have an account?<router-link to="/login"> Log in</router-link></span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,7 +33,7 @@ export default{
     signUp: function(){
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
         (user) => {
-        this.$router.replace('helloWorld')
+          this.$router.replace('helloWorld')
         },
         (err) => {
           alert('Ups..'+err.message)
@@ -39,24 +45,9 @@ export default{
 </script>
 
 <style scoped>
-.login{
-  margin-top: 100px;
-  text-align: center;
-}
 
-input{
-  margin: 10px 0;
-  width: 30%;
-  padding: 15px;
-}
-button{
-  margin-top: 20px;
-  width: 90px;
-  padding: 10px;
-  cursor: pointer;
-}
-span{
-  display: block;
-  margin-top: 20px;
-}
+/*span{
+display: block;
+margin-top: 20px;
+}*/
 </style>

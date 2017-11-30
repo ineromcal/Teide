@@ -7,7 +7,7 @@ import firebase from 'firebase'
 import axios from 'axios'
 import VueCarousel from 'vue-carousel'
 import BootstrapVue from 'bootstrap-vue'
-
+import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -51,12 +51,12 @@ new Vue({
 })
 
 //rendering Carousel
-Vue.use(VueCarousel);
-new Vue({
-  el: '#carousel',
-  components:{
-    'carousel': VueCarousel.Carousel,
-    'slide': VueCarousel.Slide
-  },
-  render: h=>h(App),
-})
+// Vue.use(VueCarousel);
+// new Vue({
+//   el: '#carousel',
+//   components:{
+//     'carousel': VueCarousel.Carousel,
+//     'slide': VueCarousel.Slide
+//   },
+//   render: h=>h(App),
+// })
