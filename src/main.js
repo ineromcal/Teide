@@ -17,13 +17,13 @@ Vue.config.productionTip = false;
 // Initialize Firebase
 let app;
 var config = {
-  apiKey: "AIzaSyB8oFZAEWBU3-K0YzocgTwLSLbrP5WPXqo",
-  authDomain: "teide-951eb.firebaseapp.com",
-  databaseURL: "https://teide-951eb.firebaseio.com",
-  projectId: "teide-951eb",
-  storageBucket: "",
-  messagingSenderId: "373621565080"
-}
+   apiKey: "AIzaSyB8oFZAEWBU3-K0YzocgTwLSLbrP5WPXqo",
+   authDomain: "teide-951eb.firebaseapp.com",
+   databaseURL: "https://teide-951eb.firebaseio.com",
+   projectId: "teide-951eb",
+   storageBucket: "teide-951eb.appspot.com",
+   messagingSenderId: "373621565080"
+ };
 firebase.initializeApp(config);
 //This fragment below is for validate the currentUser != null by observer and waiting
 firebase.auth().onAuthStateChanged(function(user){
@@ -39,9 +39,6 @@ firebase.auth().onAuthStateChanged(function(user){
 });
 //All this firebase fragment will go to LoginController.js and imported here
 
-
-
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -49,14 +46,3 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
-//rendering Carousel
-// Vue.use(VueCarousel);
-// new Vue({
-//   el: '#carousel',
-//   components:{
-//     'carousel': VueCarousel.Carousel,
-//     'slide': VueCarousel.Slide
-//   },
-//   render: h=>h(App),
-// })

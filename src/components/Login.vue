@@ -1,6 +1,6 @@
 <template>
-  <div>
-  <h3 class = "teide">Teide</h3>
+  <div class="login">
+    <h3 class = "teide">Teide</h3>
     <div class="row text-quicksand">
       <div class="col-sm-6 offset-sm-3 border withRadius">
         <div class="form-group">
@@ -60,7 +60,9 @@ export default{
 margin-top: 100px;
 text-align: center;
 }*/
-
+.login{
+  z-index: -1;
+}
 
 /*input{
 margin: 10px 0;

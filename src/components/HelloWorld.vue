@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="helloWorld">
     <div class="row margin">
       <div class="col-xs-1 offset-xs-10">
         <button class="btn btn-outline-light text-quicksand" v-on:click="logout">Logout</button>
@@ -13,17 +13,18 @@
     <div class="row" >
       <div class="weather col-sm-2">
         <p>{{ tempA.temp }} ºC</p>
-        {{ tempA.min }} ºC | {{ tempA.max }} ºC
+        <p>{{ tempA.min }} ºC | {{ tempA.max }} ºC</p>
         <p>{{ locationA}}</p>
+        <p>{{ tempA.condition}}</p>
       </div>
       <div class="weather col-sm-2">
         <p>{{ tempB.temp }} ºC</p>
-        {{ tempB.min }} ºC | {{ tempB.max }} ºC
+        <p>{{ tempB.min }} ºC | {{ tempB.max }} ºC</p>
         <p>{{ locationB}}</p>
       </div>
       <div class="weather col-sm-2">
         <p>{{ tempC.temp }} ºC</p>
-        {{ tempC.min }} ºC | {{ tempC.max }} ºC
+        <p>{{ tempC.min }} ºC | {{ tempC.max }} ºC</p>
         <p>{{ locationC}}</p>
       </div>
     </div>
@@ -39,20 +40,24 @@
 <script>
 import firebase from 'firebase'
 import currentDate from '../controllers/momentController'
-import weatherData, {getWeatherSet, keyword} from '../models/weatherData'
+import weatherData, {getWeatherSet, keyword, getConditionSet} from '../models/weatherData'
 var cdate = currentDate("date")
 var ctime = currentDate("time")
 var res = {};
 var guard = false;
 var weatherLoaded = false;
 var res = {
-  tempA:{temp:0, min:0, max:0},
-  tempB:{temp:0, min:0, max:0},
-  tempC:{temp:0, min:0, max:0}
+  tempA:{temp:0, min:0, max:0, condition:" "},
+  tempB:{temp:0, min:0, max:0, condition:" "},
+  tempC:{temp:0, min:0, max:0, condition:" "}
 };
-
+// var conditions = {
+//   condA:"",
+//   condB:"",
+//   condC:""
+// };
 export default {
-  name: 'HelloWorld',
+  name: 'helloWorld',
   data () {
     return {
       msg: 'Hello World',
@@ -76,14 +81,25 @@ export default {
         res.tempA.temp = data.tempA.temp;
         res.tempA.max = data.tempA.max;
         res.tempA.min = data.tempA.min;
+        res.tempA.condition = data.tempA.condition;
         res.tempB.temp = data.tempB.temp;
         res.tempB.max = data.tempB.max;
         res.tempB.min = data.tempB.min;
+        res.tempB.condition = data.tempB.condition;
         res.tempC.temp = data.tempC.temp;
         res.tempC.max = data.tempC.max;
         res.tempC.min = data.tempC.min;
+        res.tempC.condition = data.tempC.condition;
         weatherLoaded = true;
       });
+      // getConditionSet().then(function(conditions){
+      //   console.log(conditions);
+      //   console.log("COND: "+JSON.stringify(conditions));
+      //   conditions.condA = conditions.condA;
+      //   conditions.condB = conditions.condB;
+      //   conditions.condC = conditions.condC;
+      // });
+
     }
   },
   methods: {
@@ -102,7 +118,8 @@ h1, h2 {
   font-weight: bold;
   text-align: center;
 }
-.hello{
+.helloWorld{
+  z-index: -1;
   font-family: 'Arimo';
   color: #eee;
   text-shadow: 0.05em 0.05em grey;

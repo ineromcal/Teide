@@ -5,6 +5,7 @@ var data = {
   temp : 0,
   min : 0,
   max : 0,
+  condition:" "
 }
 
 var celsiusize = function(num, key){
@@ -21,8 +22,15 @@ export default function getMyWeather(location, apikey){
   return new Promise(function(resolve) {
     myweather.then(function (response) {
       var myo = JSON.parse(response.body)
+      console.log("MYO: "+JSON.stringify(myo));
+      if(myo.weather.length>=1){
+        _.forEach(myo.weather[0], function (value, key) {
+          if(key == 'main'){
+            data.condition = value;
+          }
+        })
+      }
       _.forEach(myo.main, function (value, key) {
-
         if (key == 'temp') {
           data.temp = celsiusize(value, key)
 
@@ -33,12 +41,9 @@ export default function getMyWeather(location, apikey){
         }
         if (key == 'temp_max') {
           data.max =  celsiusize(value, key)
-
         }
       })
       resolve(data)
-    }
-
-  )
-})
+    })
+  })
 }

@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div class="myBackground myContainer">
-
-      <router-view/>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -19,9 +18,7 @@ export default {
   },
   mounted() {
     if (!guard){
-      var d1 = new Date();
       guard = true;
-      console.log("Mounted", d1.getSeconds());
       this.getImages();
     };
   },
@@ -30,17 +27,9 @@ export default {
       fetchData().then(function(response){
         console.log("RESPONSE: "+response);
         var mydata = response;
-        var d1 = new Date();
-        console.log("Before first startRandom", d1.getSeconds());
         randomizeImages(mydata,i);
 
       })
-    },
-    prueba: function(){
-      setTimeout(function(){
-        var d2 = new Date();
-        console.log("Calling prueba", d2.getSeconds());
-      },5000);
     }
   }
 }
@@ -96,7 +85,8 @@ body,
   content: "";
   /*background-image: url("../images/image3.jpg");*/
   background-size: cover;
-  z-index:-1;
+  object-fit: cover;
+  z-index:0;
   top: 0;
   left: 0;
   bottom: 0;

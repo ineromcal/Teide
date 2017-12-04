@@ -8,13 +8,17 @@ export var i =1
 export function startRandom(srcURLs, m){
   return new Promise(function(resolve){
     $(".myContainer").css({"background-image": "url("+srcURLs[m]+")", "background-repeat":"no-repeat",
-    "transition": "background-image 2s linear",
-   "-moz-transition": "background-image 2s linear",
-   "-webkit-transition": "background-image 2s linear",
-   "-ms-transition": "background-image 2s linear"});
-    setTimeout(() => {resolve(m); console.log("Changing image to", srcURLs[m])},6000);
+     "overflow": "hidden",
+     "transition": "background-image 2s ease",
+     "-moz-transition": "background-image 2s ease",
+     "-webkit-transition": "background-image 2s ease",
+     "-ms-transition": "background-image 2s ease",
+     "display": "inline-block",
+     "height": "100%",
+     "width": "100%"
+   });
+    setTimeout(() => {resolve(m); console.log("Changing image to", srcURLs[m])}, 15000);
   })
-
 };
 export function randomizeImages(srcURLs,m){
  startRandom(srcURLs,m).then(function(response){

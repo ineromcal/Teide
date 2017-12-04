@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="sign-up">
     <h3 class = "teide">Teide</h3>
     <div class="row text-quicksand">
       <div class="col-sm-6 offset-sm-3 border withRadius">
         <div class="form-group">
           <input class="form-control myInput" type="text" v-model="email" placeholder="Email"><br>
           <input class="form-control myInput" type="password" v-model="password" placeholder="Password"><br>
-          <button class="btn btn-outline-primary" v-on:click="signUp">Sign Up</button> <br/><br/>
+          <button v-on:click="signUp"class="btn btn-outline-primary">Sign Up</button> <br/><br/>
           <span>Already have an account?<router-link to="/login"> Log in</router-link></span>
         </div>
       </div>
@@ -45,7 +45,9 @@ export default{
 </script>
 
 <style scoped>
-
+.sign-up{
+  z-index: -1;
+}
 /*span{
 display: block;
 margin-top: 20px;
