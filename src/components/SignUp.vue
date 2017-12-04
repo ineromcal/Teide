@@ -45,11 +45,5 @@ export default{
 </script>
 
 <style scoped>
-.sign-up{
-  z-index: -1;
-}
-/*span{
-display: block;
-margin-top: 20px;
-}*/
+@import "../assets/main.css";
 </style>

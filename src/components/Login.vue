@@ -55,30 +55,6 @@ export default{
 </script>
 
 <style scoped>
-/*
-.login{
-margin-top: 100px;
-text-align: center;
-}*/
-.login{
-  z-index: -1;
-}
+@import "../assets/main.css";
 
-/*input{
-margin: 10px 0;
-width: 30%;
-padding: 15px;
-background-color: white;
-}*/
-/*button{
-margin-top: 20px;
-width: 90px;
-padding: 10px;
-cursor: pointer;
-}*/
-
-p a{
-  text-decoraion: underline;
-  cursor: pointer;
-}
 </style>

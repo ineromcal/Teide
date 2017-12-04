@@ -12,6 +12,10 @@ var celsiusize = function(num, key){
   var n = parseFloat(num)-273.15;
   if(key=='temp'){
     n = n.toFixed(2);
+  }else if(key=='temp_min'){
+    n= Math.floor(n);
+  }else{
+    n= Math.ceil(n);
   }
   return n
 }

@@ -6,23 +6,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2 offset-sm-6">
+      <div class="col-sm-3 offset-sm-5">
         <h3 class="teide">Teide</h3>
       </div>
     </div>
-    <div class="row" >
-      <div class="weather col-sm-2">
+    <div class="weatherSet row" >
+      <div class="weather col-sm-1.6">
         <p>{{ tempA.temp }} ºC</p>
         <p>{{ tempA.min }} ºC | {{ tempA.max }} ºC</p>
         <p>{{ locationA}}</p>
-        <p>{{ tempA.condition}}</p>
       </div>
-      <div class="weather col-sm-2">
+      <div class="weather col-sm-1.6">
         <p>{{ tempB.temp }} ºC</p>
         <p>{{ tempB.min }} ºC | {{ tempB.max }} ºC</p>
         <p>{{ locationB}}</p>
       </div>
-      <div class="weather col-sm-2">
+      <div class="weather col-sm-1.6">
         <p>{{ tempC.temp }} ºC</p>
         <p>{{ tempC.min }} ºC | {{ tempC.max }} ºC</p>
         <p>{{ locationC}}</p>
@@ -31,6 +30,7 @@
     <div class="row">
       <div class="col-sm-4 offset-sm-4 hello">
         <h1>{{ time }}</h1>
+        <b><hr></b>
         <h2>{{ date }}</h2>
       </div>
     </div>
@@ -51,11 +51,6 @@ var res = {
   tempB:{temp:0, min:0, max:0, condition:" "},
   tempC:{temp:0, min:0, max:0, condition:" "}
 };
-// var conditions = {
-//   condA:"",
-//   condB:"",
-//   condC:""
-// };
 export default {
   name: 'helloWorld',
   data () {
@@ -92,13 +87,6 @@ export default {
         res.tempC.condition = data.tempC.condition;
         weatherLoaded = true;
       });
-      // getConditionSet().then(function(conditions){
-      //   console.log(conditions);
-      //   console.log("COND: "+JSON.stringify(conditions));
-      //   conditions.condA = conditions.condA;
-      //   conditions.condB = conditions.condB;
-      //   conditions.condC = conditions.condC;
-      // });
 
     }
   },
@@ -107,45 +95,15 @@ export default {
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
       })
-    }
+    },
+    // getIcon: function(condition){
+    //   if
+    // }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: bold;
-  text-align: center;
-}
-.helloWorld{
-  z-index: -1;
-  font-family: 'Arimo';
-  color: #eee;
-  text-shadow: 0.05em 0.05em grey;
-}
-.margin{
-  margin-top: 50px;
-  margin-right: 0%;
-  float:right;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-.weather{
-  /*border:1px solid white;
-  background-color: rgba(255,255,255,0.25);*/
-  margin-left: 10px;
-  color:white;
-}
+@import "../assets/main.css";
 </style>

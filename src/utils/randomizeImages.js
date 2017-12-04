@@ -9,6 +9,7 @@ export function startRandom(srcURLs, m){
   return new Promise(function(resolve){
     $(".myContainer").css({"background-image": "url("+srcURLs[m]+")", "background-repeat":"no-repeat",
      "overflow": "hidden",
+     "background-color": "rgba(0,0,0,0.9)",
      "transition": "background-image 2s ease",
      "-moz-transition": "background-image 2s ease",
      "-webkit-transition": "background-image 2s ease",
