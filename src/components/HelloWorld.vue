@@ -10,7 +10,8 @@
         <h3 class="teide">Teide</h3>
       </div>
     </div>
-    <div class="weatherSet row" >
+    <div class="weatherSet row">
+
       <div class="weather col-sm-1.6">
         <p>{{ tempA.temp }} ºC</p>
         <p>{{ tempA.min }} ºC | {{ tempA.max }} ºC</p>
